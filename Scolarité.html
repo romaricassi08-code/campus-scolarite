@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Campus Scolarité – Inscriptions et paiements</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f2f5f7;--card:#fff;--tx:#12263a;--mut:#62758a;--pri:#0f8a6d;--acc:#f59e0b;--navy:#0d2a45;--bd:#e1e8ee;--bad:#c62828;--badbg:#fdecea;--okbg:#e3f6ef;--sh:0 6px 22px rgba(13,42,69,.08);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b1622;--card:#132335;--tx:#e8f0f7;--mut:#8fa4b8;--pri:#2fd3a5;--bd:#22384d;--bad:#ff8a80;--badbg:#3a1f22;--okbg:#0f3a30;--sh:none}}
+:root[data-theme="dark"]{--bg:#0b1622;--card:#132335;--tx:#e8f0f7;--mut:#8fa4b8;--pri:#2fd3a5;--bd:#22384d;--bad:#ff8a80;--badbg:#3a1f22;--okbg:#0f3a30;--sh:none}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.5 "Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",sans-serif}
+.hero{background:linear-gradient(120deg,var(--navy),#0b5f57 70%,#0f8a6d);color:#fff;padding:18px 16px 70px}
+.hero-in,main{max-width:1000px;margin:0 auto}
+.top{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px}.logo{width:40px;height:40px;border-radius:10px;background:var(--acc);display:grid;place-items:center;font-size:22px}
+.brand b{font-size:1.15rem;font-weight:800;display:block;line-height:1.1}.brand span{font-size:.78rem;opacity:.8}
+.who{display:flex;align-items:center;gap:8px;font-size:.85rem}.pill{background:rgba(255,255,255,.16);padding:5px 11px;border-radius:99px}
+main{padding:0 16px 40px;margin-top:-50px}
+.tabs{display:flex;gap:4px;overflow-x:auto;background:var(--card);padding:5px;border-radius:12px;box-shadow:var(--sh);margin-bottom:16px}
+.tabs a{padding:9px 14px;border-radius:9px;color:var(--mut);cursor:pointer;font-weight:700;font-size:.88rem;white-space:nowrap}
+.tabs a.on{background:var(--pri);color:#fff}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:16px;margin-bottom:16px;box-shadow:var(--sh)}
+h2{font-size:1.02rem;font-weight:800;margin:0 0 12px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-bottom:16px}
+.st{background:var(--card);border-radius:14px;padding:14px 16px;box-shadow:var(--sh);border:1px solid var(--bd);border-left:5px solid var(--pri)}
+.st.o{border-left-color:var(--acc)}.st.r{border-left-color:var(--bad)}.st.n{border-left-color:var(--navy)}
+.st small{color:var(--mut);font-weight:600}.st b{display:block;font-size:1.35rem;font-weight:800;margin-top:2px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}@media(max-width:720px){.two{grid-template-columns:1fr}}
+.ring{width:140px;height:140px;border-radius:50%;margin:6px auto 10px;display:grid;place-items:center}
+.ring div{width:104px;height:104px;border-radius:50%;background:var(--card);display:grid;place-items:center;font-size:1.6rem;font-weight:800}
+.bar{height:9px;border-radius:9px;background:var(--bd);overflow:hidden}.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--pri),var(--acc));border-radius:9px}
+.fl{margin-bottom:12px}.fl .t{display:flex;justify-content:space-between;font-size:.85rem;font-weight:600;margin-bottom:4px}
+label{display:block;font-size:.8rem;color:var(--mut);margin:10px 0 3px;font-weight:700}
+input,select{width:100%;padding:11px;border:1.5px solid var(--bd);border-radius:10px;background:var(--bg);color:var(--tx);font:inherit}
+.g{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:0 14px}
+button{padding:10px 16px;border:0;background:var(--pri);color:#fff;border-radius:10px;cursor:pointer;font:inherit;font-weight:700;font-size:.88rem}
+button.s{background:transparent;color:var(--pri);border:1.5px solid var(--pri)}button.d{background:var(--badbg);color:var(--bad)}button.sm{padding:6px 10px;font-size:.8rem}
+button:focus-visible,input:focus-visible,select:focus-visible,.tabs a:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+.tb{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px}.tb input{flex:1;min-width:180px}.tb select{width:auto}
+.w{overflow-x:auto}table{width:100%;border-collapse:collapse;font-size:.88rem}
+th,td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--bd);white-space:nowrap}th{color:var(--mut);font-size:.78rem;font-weight:700}
+.av{width:36px;height:36px;border-radius:50%;display:inline-grid;place-items:center;color:#fff;font-weight:800;font-size:.8rem;vertical-align:middle;margin-right:9px}
+.bd{padding:3px 10px;border-radius:99px;font-size:.76rem;font-weight:800}.bd.ok{background:var(--okbg);color:var(--pri)}.bd.no{background:var(--badbg);color:var(--bad)}
+.mut{color:var(--mut)}.row{display:flex;gap:6px;flex-wrap:wrap}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(18px + env(safe-area-inset-bottom,0px));background:var(--navy);color:#fff;padding:11px 18px;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.3);z-index:9;max-width:92vw;font-weight:600}
+.toast.e{background:var(--bad)}
+.recu{border:2px dashed var(--pri);border-radius:12px;padding:20px;text-align:center}.recu h2{font-size:1.2rem}.recu .big{font-size:1.8rem;font-weight:800;color:var(--pri);margin:6px 0}
+.recu p{margin:4px 0}
+.login{display:grid;grid-template-columns:1.1fr 1fr;max-width:860px;margin:7vh auto;background:var(--card);border-radius:20px;overflow:hidden;box-shadow:0 20px 50px rgba(13,42,69,.25)}
+.login .l{background:linear-gradient(150deg,var(--navy),#0b5f57);color:#fff;padding:34px}.login .l h1{font-size:1.7rem;margin:14px 0 8px;line-height:1.15}.login .l p{opacity:.85;margin:0}
+.login .r{padding:34px}@media(max-width:720px){.login{grid-template-columns:1fr;margin:0}.login .l{padding:24px}}
+.demo{margin-top:14px;font-size:.78rem;color:var(--mut);background:var(--bg);padding:10px;border-radius:10px}.err{color:var(--bad);min-height:1.3em;font-weight:600;font-size:.85rem;margin:8px 0}
+footer{max-width:1000px;margin:0 auto;padding:18px 16px 28px;text-align:center;color:var(--mut);font-size:.82rem}footer a{color:var(--pri);font-weight:700;cursor:pointer;margin:0 6px}
+ul.h{padding-left:18px;margin:0 0 10px}ul.h li{margin-bottom:6px}
+@media print{footer,.hero,.tabs,.card:not(.pr),.toast,.stats{display:none}main{margin:0}body{background:#fff}}
+</style></head><body><div id="app"></div><div id="t"></div>
+<script>
+var FIL=['Informatique','Droit','Sciences économiques','Anglais','Gestion commerciale','Finance comptabilité'];
+var K='univ_v2',S=null,pg='',tab='dash',edit=null,pend=null,recu=null,payPre='',q='',fl='';
+var D=load();
+function load(){try{var r=localStorage.getItem(K);if(r){var d=JSON.parse(r);d.e.forEach(function(x){if(x.fil==='Gestion')x.fil='Gestion commerciale'});return d}}catch(e){}
+return{e:[{id:1,mat:'2026-001',nom:'Kouassi',pre:'Awa',fil:'Informatique',niv:'L1',tel:'0700000001',du:450000},{id:2,mat:'2026-002',nom:'Traoré',pre:'Ibrahim',fil:'Gestion commerciale',niv:'L2',tel:'0700000002',du:400000},{id:3,mat:'2026-003',nom:'Yao',pre:'Esther',fil:'Informatique',niv:'L2',tel:'0700000003',du:450000},{id:4,mat:'2026-004',nom:'Koné',pre:'Mamadou',fil:'Droit',niv:'L1',tel:'0700000004',du:380000}],p:[{id:11,sid:1,m:450000,d:'01/09/2026',n:'REC-2026-0001',par:'comptable'},{id:12,sid:2,m:150000,d:'03/09/2026',n:'REC-2026-0002',par:'comptable'},{id:13,sid:3,m:200000,d:'05/09/2026',n:'REC-2026-0003',par:'comptable'}],j:[],n:3}}
+function save(){try{localStorage.setItem(K,JSON.stringify(D))}catch(e){}}
+var U={compta:['comptable','compta123','Comptabilité'],secretaire:['secretaire','secret123','Secrétariat'],directeur:['directeur','direct123','Direction']};
+var CO=['#0f8a6d','#0d2a45','#d97706','#7c3aed','#db2777','#2563eb'];
+function esc(s){return String(s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+function F(n){return Number(n).toLocaleString('fr-FR')+' FCFA'}
+function v(i){return document.getElementById(i).value}
+function paye(id){return D.p.filter(function(x){return x.sid==id}).reduce(function(a,x){return a+x.m},0)}
+function can(){return S&&S.r==='compta'}
+function log(a){D.j.unshift({d:new Date().toLocaleString('fr-FR'),u:S.l,a:a});save()}
+function toast(m,e){var t=document.getElementById('t');t.innerHTML='<div class="toast'+(e?' e':'')+'" role="status">'+esc(m)+'</div>';setTimeout(function(){t.innerHTML=''},3200)}
+function go(t){pg='';tab=t;edit=null;recu=null;pend=null;R()}
+function av(x){return'<span class="av" style="background:'+CO[x.id%6]+'">'+esc((x.nom[0]||'')+(x.pre[0]||''))+'</span>'}
+function pc(x){return Math.min(100,Math.round(paye(x.id)/(x.du||1)*100))}
+function login(ev){ev.preventDefault();var l=v('lg').trim(),p=v('pw');
+for(var r in U){if(U[r][0]===l&&U[r][1]===p){S={r:r,l:l};tab='dash';return R()}}
+document.getElementById('er').textContent='Identifiant ou mot de passe incorrect.'}
+function out(){S=null;R()}
+function saveEtu(ev){ev.preventDefault();if(!can())return;
+var o={mat:v('mat').trim(),nom:v('nom').trim(),pre:v('pre').trim(),fil:v('fil').trim(),niv:v('niv'),tel:v('tel').trim(),du:Number(v('du'))};
+if(!o.mat||!o.nom||!o.pre||!(o.du>=0))return toast('Matricule, nom, prénom et montant dû sont obligatoires.',1);
+if(edit){var e=D.e.filter(function(x){return x.id==edit})[0];for(var k in o)e[k]=o[k];log('Modification de '+o.nom+' '+o.pre);toast('Étudiant modifié.')}
+else{o.id=Date.now();D.e.push(o);log('Inscription de '+o.nom+' '+o.pre);toast('Étudiant inscrit.')}
+edit=null;save();R()}
+function del(id){if(!can())return;if(pend!==id){pend=id;toast('Cliquez de nouveau sur Supprimer pour confirmer.',1);return R()}
+var e=D.e.filter(function(x){return x.id==id})[0];D.e=D.e.filter(function(x){return x.id!=id});D.p=D.p.filter(function(x){return x.sid!=id});
+log('Suppression de '+e.nom+' '+e.pre);pend=null;save();toast('Étudiant supprimé.');R()}
+function pay(ev){ev.preventDefault();if(!can())return;
+var id=v('ps'),m=Number(v('pm')),e=D.e.filter(function(x){return x.id==id})[0];
+if(!e)return toast('Choisissez un étudiant.',1);
+var reste=e.du-paye(id);if(!(m>0)||m>reste)return toast('Le montant doit être entre 1 et '+F(reste)+'.',1);
+D.n++;var r={id:Date.now(),sid:e.id,m:m,d:new Date().toLocaleDateString('fr-FR'),n:'REC-'+new Date().getFullYear()+'-'+String(D.n).padStart(4,'0'),par:S.l};
+D.p.push(r);log('Paiement '+F(m)+' de '+e.nom+' ('+r.n+')');save();recu=r;payPre='';toast('Paiement enregistré.');R()}
+function srch(el){q=el.value;var p=el.selectionStart;R();var n=document.getElementById('sq');if(n){n.focus();n.setSelectionRange(p,p)}}
+function ft(){return'<footer>© 2026 Campus Scolarité · Tous droits réservés<br><a tabindex="0" onclick="pg=\'apr\';R();scrollTo(0,0)">À propos</a>·<a tabindex="0" onclick="pg=\'aid\';R();scrollTo(0,0)">Aide</a></footer>'}
+function vPg(){var apr=pg=='apr',c=apr?'<h2>À propos</h2><p>Campus Scolarité est une application de gestion des inscriptions et des paiements des étudiants d’une université. La secrétaire consulte, le directeur suit les étudiants soldés, et la comptabilité est seule autorisée à modifier les données.</p><ul class="h"><li><b>Rôles :</b> comptabilité, secrétariat, direction.</li><li><b>Fonctions :</b> inscription, paiement, reçus numérotés et imprimables, suivi par filière, journal des actions.</li><li><b>Technologies :</b> HTML, CSS et JavaScript.</li><li><b>Données :</b> elles sont conservées dans le navigateur de l’appareil utilisé.</li></ul><p class="mut">© 2026 Campus Scolarité. Tous droits réservés. Toute reproduction ou diffusion sans autorisation est interdite.</p>':'<h2>Aide</h2><ul class="h"><li><b>Se connecter :</b> saisissez votre identifiant et votre mot de passe, puis appuyez sur « Se connecter ».</li><li><b>Inscrire un étudiant :</b> onglet Étudiants, remplissez le formulaire (comptabilité uniquement).</li><li><b>Enregistrer un paiement :</b> onglet Paiements, choisissez l’étudiant et le montant. Le reçu s’affiche aussitôt.</li><li><b>Imprimer un reçu :</b> après le paiement, appuyez sur « Imprimer le reçu ».</li><li><b>Voir les soldés :</b> onglet Soldés. Les étudiants qui ont tout payé y apparaissent.</li><li><b>Suivre une filière :</b> onglet Filières, avec le total encaissé et l’historique des paiements.</li><li><b>Modifier ou supprimer :</b> seule la comptabilité voit ces boutons. Les autres comptes sont en lecture seule.</li><li><b>Mot de passe oublié :</b> contactez l’administrateur de l’application.</li></ul>';
+return'<div class="hero"><div class="hero-in"><div class="top"><div class="brand"><div class="logo">🎓</div><div><b>Campus Scolarité</b><span>'+(apr?'À propos':'Aide')+'</span></div></div><button class="sm s" style="color:#fff;border-color:#fff" onclick="pg=\'\';R()">← Retour</button></div></div></div><main><div class="card">'+c+'</div></main>'+ft()}
+function R(){var a=document.getElementById('app');if(pg){a.innerHTML=vPg();return}
+if(!S){a.innerHTML='<div class="login"><div class="l"><div class="logo">🎓</div><h1>Campus Scolarité</h1><p>Inscriptions, paiements et reçus des étudiants, au même endroit et sous contrôle de la comptabilité.</p></div><div class="r"><h2>Connexion</h2><form onsubmit="login(event)"><label for="lg">Identifiant</label><input id="lg" autocomplete="username"><label for="pw">Mot de passe</label><input id="pw" type="password" autocomplete="current-password"><div class="err" id="er"></div><button style="width:100%">Se connecter</button></form><div class="demo">Comptes démo :<br>comptable / compta123<br>secretaire / secret123<br>directeur / direct123</div></div></div>'+ft();return}
+var t=[['dash','Tableau de bord'],['etu','Étudiants'],['fil','Filières'],['pai','Paiements'],['sol','Soldés'],['jou','Journal']];
+var h='<div class="hero"><div class="hero-in"><div class="top"><div class="brand"><div class="logo">🎓</div><div><b>Campus Scolarité</b><span>Année universitaire 2026-2027</span></div></div><div class="who"><span class="pill">'+U[S.r][2]+' · '+(can()?'modification autorisée':'lecture seule')+'</span><button class="sm s" style="color:#fff;border-color:#fff" onclick="out()">Quitter</button></div></div></div></div><main><div class="tabs">';
+t.forEach(function(x){h+='<a tabindex="0" class="'+(tab==x[0]?'on':'')+'" onclick="go(\''+x[0]+'\')">'+x[1]+'</a>'});
+h+='</div>';
+h+=tab=='dash'?vDash():tab=='etu'?vEtu():tab=='fil'?vFil():tab=='pai'?vPai():tab=='sol'?vSol():vJou();
+a.innerHTML=h+'</main>'+ft()}
+function tot(){var du=0,pa=0;D.e.forEach(function(x){du+=x.du;pa+=paye(x.id)});return{du:du,pa:pa,r:du-pa,p:du?Math.round(pa/du*100):0}}
+function vDash(){var T=tot(),so=D.e.filter(function(x){return x.du-paye(x.id)<=0}).length;
+var h='<div class="stats"><div class="st n"><small>Étudiants inscrits</small><b>'+D.e.length+'</b></div><div class="st"><small>Total encaissé</small><b>'+F(T.pa)+'</b></div><div class="st r"><small>Reste à encaisser</small><b>'+F(T.r)+'</b></div><div class="st o"><small>Étudiants soldés</small><b>'+so+' / '+D.e.length+'</b></div></div><div class="two"><div class="card"><h2>Taux de recouvrement</h2><div class="ring" style="background:conic-gradient(var(--pri) '+T.p*3.6+'deg,var(--bd) 0)"><div>'+T.p+'%</div></div><p class="mut" style="text-align:center;margin:0">du montant total attendu est encaissé</p></div><div class="card"><h2>Paiements par filière</h2>';
+var f={};D.e.forEach(function(x){var k=x.fil||'Autre';f[k]=f[k]||{du:0,pa:0};f[k].du+=x.du;f[k].pa+=paye(x.id)});
+for(var k in f){var p=f[k].du?Math.round(f[k].pa/f[k].du*100):0;h+='<div class="fl"><div class="t"><span>'+esc(k)+'</span><span>'+p+'%</span></div><div class="bar"><i style="width:'+p+'%"></i></div></div>'}
+if(!D.e.length)h+='<p class="mut">Aucune donnée pour le moment.</p>';
+h+='</div></div><div class="card"><h2>Derniers paiements</h2><div class="w"><table><tr><th>Reçu</th><th>Date</th><th>Étudiant</th><th>Montant</th></tr>';
+D.p.slice(-5).reverse().forEach(function(r){var e=D.e.filter(function(x){return x.id==r.sid})[0]||{nom:'?',pre:'',id:0};h+='<tr><td>'+esc(r.n)+'</td><td>'+esc(r.d)+'</td><td>'+esc(e.nom+' '+e.pre)+'</td><td><b>'+F(r.m)+'</b></td></tr>'});
+if(!D.p.length)h+='<tr><td colspan="4" class="mut">Aucun paiement enregistré.</td></tr>';
+return h+'</table></div></div>'}
+function vEtu(){var h='';
+if(can()){var e=edit?D.e.filter(function(x){return x.id==edit})[0]:{mat:'',nom:'',pre:'',fil:'',niv:'L1',tel:'',du:''};
+h+='<div class="card"><h2>'+(edit?'Modifier l’étudiant':'Inscrire un étudiant')+'</h2><form onsubmit="saveEtu(event)"><div class="g"><div><label for="mat">Matricule</label><input id="mat" value="'+esc(e.mat)+'"></div><div><label for="nom">Nom</label><input id="nom" value="'+esc(e.nom)+'"></div><div><label for="pre">Prénom</label><input id="pre" value="'+esc(e.pre)+'"></div><div><label for="fil">Filière</label><select id="fil">'+FIL.concat(e.fil&&FIL.indexOf(e.fil)<0?[e.fil]:[]).map(function(n){return'<option'+(n==e.fil?' selected':'')+'>'+esc(n)+'</option>'}).join('')+'</select></div><div><label for="niv">Niveau</label><select id="niv">'+['L1','L2','L3','M1','M2'].map(function(n){return'<option'+(n==e.niv?' selected':'')+'>'+n+'</option>'}).join('')+'</select></div><div><label for="tel">Contact</label><input id="tel" value="'+esc(e.tel)+'"></div><div><label for="du">Montant dû (FCFA)</label><input id="du" type="number" min="0" value="'+esc(e.du)+'"></div></div><div class="row" style="margin-top:14px"><button>'+(edit?'Enregistrer les changements':'Inscrire l’étudiant')+'</button>'+(edit?'<button type="button" class="s" onclick="go(\'etu\')">Annuler</button>':'')+'</div></form></div>'}
+var L=D.e.filter(function(x){var s=(x.nom+' '+x.pre+' '+x.mat+' '+x.fil).toLowerCase(),ok=x.du-paye(x.id)<=0;return s.indexOf(q.toLowerCase())>-1&&(!fl||(fl=='s'?ok:!ok))});
+h+='<div class="card"><h2>Étudiants ('+L.length+')</h2><div class="tb"><input id="sq" placeholder="Rechercher un nom, un matricule, une filière" value="'+esc(q)+'" oninput="srch(this)"><select onchange="fl=this.value;R()"><option value="">Tous</option><option value="s"'+(fl=='s'?' selected':'')+'>Soldés</option><option value="n"'+(fl=='n'?' selected':'')+'>Non soldés</option></select></div><div class="w"><table><tr><th>Étudiant</th><th>Filière</th><th>Contact</th><th>Dû</th><th>Progression</th><th>Statut</th>'+(can()?'<th></th>':'')+'</tr>';
+L.forEach(function(x){var r=x.du-paye(x.id);h+='<tr><td>'+av(x)+'<b>'+esc(x.nom+' '+x.pre)+'</b><br><span class="mut" style="margin-left:45px;font-size:.75rem">'+esc(x.mat)+'</span></td><td>'+esc(x.fil+' '+x.niv)+'</td><td>'+esc(x.tel)+'</td><td>'+F(x.du)+'</td><td style="min-width:120px"><div class="bar"><i style="width:'+pc(x)+'%"></i></div><span class="mut" style="font-size:.74rem">'+pc(x)+'% · reste '+F(r)+'</span></td><td><span class="bd '+(r<=0?'ok':'no')+'">'+(r<=0?'Soldé':'À payer')+'</span></td>'+(can()?'<td><div class="row"><button class="sm s" onclick="edit='+x.id+';R();scrollTo(0,0)">Modifier</button><button class="sm s" onclick="payPre='+x.id+';go(\'pai\')">Payer</button><button class="sm d" onclick="del('+x.id+')">Supprimer</button></div></td>':'')+'</tr>'});
+if(!L.length)h+='<tr><td colspan="7" class="mut">Aucun étudiant trouvé.</td></tr>';
+return h+'</table></div></div>'}
+function vFil(){var h='',N=FIL.slice();D.e.forEach(function(x){if(x.fil&&N.indexOf(x.fil)<0)N.push(x.fil)});
+N.forEach(function(k){var L=D.e.filter(function(x){return x.fil==k}),I=L.map(function(x){return x.id}),P=D.p.filter(function(r){return I.indexOf(r.sid)>-1}),du=0,pa=0;
+L.forEach(function(x){du+=x.du;pa+=paye(x.id)});var p=du?Math.round(pa/du*100):0;
+h+='<div class="card"><h2>'+esc(k)+' <span class="bd '+(p>=100&&L.length?'ok':'no')+'">'+p+'% encaissé</span></h2><div class="stats" style="margin-bottom:10px"><div class="st n"><small>Étudiants</small><b>'+L.length+'</b></div><div class="st"><small>Encaissé</small><b>'+F(pa)+'</b></div><div class="st r"><small>Reste à encaisser</small><b>'+F(du-pa)+'</b></div></div><div class="bar"><i style="width:'+p+'%"></i></div>';
+if(P.length){h+='<div class="w"><table><tr><th>Reçu</th><th>Date</th><th>Étudiant</th><th>Niveau</th><th>Montant</th></tr>';
+P.slice().reverse().forEach(function(r){var e=D.e.filter(function(x){return x.id==r.sid})[0];h+='<tr><td>'+esc(r.n)+'</td><td>'+esc(r.d)+'</td><td>'+esc(e.nom+' '+e.pre)+'</td><td>'+esc(e.niv)+'</td><td><b>'+F(r.m)+'</b></td></tr>'});h+='</table></div>'}
+else h+='<p class="mut">Aucun paiement pour cette filière.</p>';
+h+='</div>'});return h}
+function vPai(){var h='';
+if(can()){h+='<div class="card"><h2>Enregistrer un paiement</h2><form onsubmit="pay(event)"><div class="g"><div><label for="ps">Étudiant</label><select id="ps"><option value="">Choisir…</option>'+D.e.filter(function(x){return x.du-paye(x.id)>0||x.id==payPre}).map(function(x){return'<option value="'+x.id+'"'+(x.id==payPre?' selected':'')+'>'+esc(x.mat+' – '+x.nom+' '+x.pre+' (reste '+F(x.du-paye(x.id))+')')+'</option>'}).join('')+'</select></div><div><label for="pm">Montant versé (FCFA)</label><input id="pm" type="number" min="1"></div></div><button style="margin-top:14px">Enregistrer et éditer le reçu</button></form></div>'}
+else h+='<div class="card mut">Seule la comptabilité peut enregistrer un paiement.</div>';
+if(recu){var e=D.e.filter(function(x){return x.id==recu.sid})[0]||{nom:'?',pre:'',mat:'',du:0,id:0};
+h+='<div class="card pr"><div class="recu"><div class="logo" style="margin:0 auto 6px">🎓</div><h2>Reçu de paiement n° '+esc(recu.n)+'</h2><div class="big">'+F(recu.m)+'</div><p>Reçu de <b>'+esc(e.nom+' '+e.pre)+'</b> ('+esc(e.mat)+')</p><p>Date : '+esc(recu.d)+'</p><p>Reste à payer : <b>'+F(e.du-paye(e.id))+'</b></p><p class="mut">Encaissé par : '+esc(recu.par)+'</p></div><p><button onclick="print()">Imprimer le reçu</button></p></div>'}
+h+='<div class="card"><h2>Historique des paiements</h2><div class="w"><table><tr><th>Reçu</th><th>Date</th><th>Étudiant</th><th>Montant</th></tr>';
+D.p.slice().reverse().forEach(function(r){var e=D.e.filter(function(x){return x.id==r.sid})[0]||{nom:'?',pre:''};h+='<tr><td>'+esc(r.n)+'</td><td>'+esc(r.d)+'</td><td>'+esc(e.nom+' '+e.pre)+'</td><td><b>'+F(r.m)+'</b></td></tr>'});
+if(!D.p.length)h+='<tr><td colspan="4" class="mut">Aucun paiement enregistré.</td></tr>';
+return h+'</table></div></div>'}
+function vSol(){var s=D.e.filter(function(x){return x.du-paye(x.id)<=0}),n=D.e.filter(function(x){return x.du-paye(x.id)>0});
+var h='<div class="card"><h2>Étudiants soldés ('+s.length+')</h2><div class="w"><table><tr><th>Étudiant</th><th>Filière</th><th>Total payé</th></tr>';
+s.forEach(function(x){h+='<tr><td>'+av(x)+esc(x.nom+' '+x.pre)+'</td><td>'+esc(x.fil+' '+x.niv)+'</td><td><span class="bd ok">'+F(paye(x.id))+'</span></td></tr>'});
+if(!s.length)h+='<tr><td colspan="3" class="mut">Aucun étudiant soldé pour le moment.</td></tr>';
+h+='</table></div></div><div class="card"><h2>Non soldés ('+n.length+')</h2><div class="w"><table><tr><th>Étudiant</th><th>Contact</th><th>Reste à payer</th></tr>';
+n.forEach(function(x){h+='<tr><td>'+av(x)+esc(x.nom+' '+x.pre)+'</td><td>'+esc(x.tel)+'</td><td><span class="bd no">'+F(x.du-paye(x.id))+'</span></td></tr>'});
+return h+'</table></div></div>'}
+function vJou(){var h='<div class="card"><h2>Journal des actions</h2><div class="w"><table><tr><th>Date</th><th>Utilisateur</th><th>Action</th></tr>';
+D.j.forEach(function(x){h+='<tr><td>'+esc(x.d)+'</td><td>'+esc(x.u)+'</td><td>'+esc(x.a)+'</td></tr>'});
+if(!D.j.length)h+='<tr><td colspan="3" class="mut">Aucune action enregistrée.</td></tr>';
+return h+'</table></div></div>'}
+R();
+</script></body></html>
